@@ -1,4 +1,13 @@
+import os 
+
 daftartotal = []
+
+def tampilkan_riwayat():
+    if not os.path.exists("riwayat_belanja.txt"):
+        print("Belum ada riwayat belanja.")
+        return
+    with open("riwayat_belanja.txt", "r") as f:
+        print(f.read())
 
 def validasi_input(pesan):
     while True:
@@ -16,6 +25,8 @@ def hitungbelanja(harga, jumlahbrg):
     diskon = subtotal * 10 // 100
     total = subtotal - diskon
     return subtotal, diskon, total
+
+tampilkan_riwayat()
 
 while True:
     barang = input("Nama barang (ketik selesai untuk berhenti): ")

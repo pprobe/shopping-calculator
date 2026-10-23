@@ -2,6 +2,16 @@ import os
 
 daftartotal = []
 
+def total_riwayat_belanja():
+    if not os.path.exists("riwayat_belanja.txt"):
+        print("Belum ada riwayat belanja.")
+        return 0
+    total = 0
+    with open("riwayat_belanja.txt", "r") as f:
+        for baris in f:
+            if baris.startswith("TOTAL KESELURUHAN:"):
+                total += int(baris.split(":")[1].strip())
+    return total
 def tampilkan_riwayat():
     if not os.path.exists("riwayat_belanja.txt"):
         print("Belum ada riwayat belanja.")
@@ -53,3 +63,5 @@ print("Total belanja keseluruhan  ", sum(daftartotal))
 
 with open("riwayat_belanja.txt", "a") as f:
     f.write(f"TOTAL KESELURUHAN: {sum(daftartotal)}\n{'-' * 40}\n")
+
+print("total seluruh riwayat", total_riwayat_belanja())
